@@ -18,32 +18,11 @@ import {loginBank, loginPhone} from "./secret/logins.js"
 // Verlasse die Schleife mittels return oder break, wenn du das PAsswort gefunden hast
 function bruteForceBank(){
 
-  //Lösung
-  for(let i=0; i<=9999; i++) {
-    let pin = i.toString();
+  //hier deine Lösung
 
-    // entsprechend viele Nullen vor i setzen
-    pin = "0".repeat(4 - pin.length) + i
-
-    // logge alle 100 Durchgänge
-    if (i % 100 == 0) {
-      console.log(`Bank Pin bei Durchgang ${i}: ${pin}`);
-    }
-    
-    const isRightPin = loginBank(pin);
-    if(isRightPin){ 
-      console.log('Bank PIN gefunden: ', pin);
-      return pin;
-    }
-
-  }
-  console.log("Pin not found")
-  return false;
 }
 
-console.time("Dauer für Bank PIN"); // LÖSUNG
-bruteForceBank(4);
-console.timeEnd("Dauer für Bank PIN"); // LÖSUNG
+bruteForceBank();
 
 
 // *** TEIL 2: Hack the Phone *** 
@@ -58,37 +37,9 @@ console.timeEnd("Dauer für Bank PIN"); // LÖSUNG
 // => Rückgabe von loginPhone: true oder false
 
 
-
 async function bruteForcePhone() {
-  //Lösung
-  for(let i=0; i<=9999; i++) {
-    let pin = i.toString();
+  // hier deine Lösung
 
-    
-    // entsprechend viele Nullen vor i setzen
-    pin = "0".repeat(4 - pin.length) + i
-
-    // logge alle 100 Durchgänge
-    if (i % 100 == 0) {
-      console.log(`Phone Pin bei Durchgang ${i}: ${pin}`);
-    }
-
-
-    //pin hashen
-    const hashedPin = await bcrypt.hash(pin,"$2b$04$$2b$12$rCi9f6dslyssI0nYy1c3Pu")
-    debugger;
-    const isRightPin = loginPhone(hashedPin);
-    if(isRightPin){ 
-      console.log('Phone PIN gefunden: ', pin);
-      return pin;
-    }
-
-  }
-  console.log("Hashed Pin not found")
-  return false;
 }
 
-console.time("Dauer für Phone PIN"); // LÖSUNG
-await bruteForcePhone(4);
-console.timeEnd("Dauer für Phone PIN"); // LÖSUNG
-
+await bruteForcePhone(); // Warum await? Damit du die Dauer richtig messen kannst

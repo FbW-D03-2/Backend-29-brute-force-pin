@@ -5,7 +5,7 @@ In dieser Aufgabe sollst du zwei ganz simple Brute Force Attacks durchführen. D
 
 
 ### Vorbereitung
-* installiere alle Dependencies
+* führe `npm init` aus und installiere bcrypt
 * führe ```npm start``` aus
   
   
